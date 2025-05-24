@@ -1,4 +1,4 @@
-# Memprediksi Harga Gas Alam Global Menggunakan Deep Learning dengan Long Short Term Memory
+# Memprediksi Harga Gas Alam Global Menggunakan Deep Learning berbasis Long Short Term Memory
 
 ## 1. Domain Proyek
 ### Latar Belakang
