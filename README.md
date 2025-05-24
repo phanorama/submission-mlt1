@@ -34,7 +34,8 @@ Mengembangkan model deep learning berbasis LSTM dan untuk memprediksi harga gas 
 
 * **Fitur utama**: `Date`, `Price`
 
-* **Jumlah data**: 7128 baris (bervariasi tergantung preprocessing)
+* **Jumlah data**: 7128 baris 
+* **Jumlah data setelah preprocessing**: 7127 baris 
 
 ### Exploratory Data Analysis
 
