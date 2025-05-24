@@ -20,7 +20,7 @@ Mengembangkan model deep learning berbasis LSTM dan untuk memprediksi harga gas 
 ### Solution Statement
 
 1. Membangun model baseline menggunakan algoritma LSTM untuk memprediksi harga gas alam.
-3. Melakukan evaluasi dan perbandingan model menggunakan metrik MSE, RMSE dan MAE.
+3. Melakukan evaluasi menggunakan metrik MSE, RMSE dan MAE.
 4. Menyediakan prediksi harga gas alam hingga Januari 2028 kedepan.
 
 ## 3. Data Understanding
@@ -93,6 +93,7 @@ Test RMSE      : 0.0161
 Test MAE       : 0.0093
 ```
 ![download](https://github.com/user-attachments/assets/ffd1ffe8-d0d4-4217-b2ce-dbbf4ebbd34d)
+Berdasarkan hasil evaluasi pada data uji, model LSTM yang dikembangkan menunjukkan performa prediksi yang sangat baik. Nilai Mean Squared Error (MSE) sebesar 0.0010 menunjukkan bahwa rata-rata kesalahan kuadrat antara nilai prediksi dan nilai aktual sangat kecil. Hal ini diperkuat oleh nilai Root Mean Squared Error (RMSE) sebesar 0.0161, yang menunjukkan bahwa secara rata-rata, prediksi model hanya meleset sekitar 1.61 sen per MMBtu dari harga aktual. Selain itu, nilai Mean Absolute Error (MAE) yang diperoleh adalah 0.0093, yang berarti kesalahan prediksi rata-rata berada pada kisaran 0.93 sen per MMBtu. Nilai-nilai ini mengindikasikan bahwa model mampu mempelajari pola historis data harga gas alam dengan baik, serta memiliki tingkat akurasi yang tinggi dalam melakukan prediksi pada data yang tidak pernah dilihat sebelumnya.
 
 ### Hasil Sementara:
 ![download](https://github.com/user-attachments/assets/ef23c8cd-4a00-4183-a485-295b9885b6d0)
