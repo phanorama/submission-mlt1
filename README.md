@@ -15,12 +15,12 @@ Harga gas alam global bersifat sangat fluktuatif dan sulit diprediksi. Model per
 
 ### Goals
 
-Mengembangkan model deep learning berbasis LSTM dan GRU untuk memprediksi harga gas alam ke depan, dan membandingkan performa kedua model tersebut.
+Mengembangkan model deep learning berbasis LSTM dan untuk memprediksi harga gas alam ke depan, dan membandingkan performa kedua model tersebut.
 
 ### Solution Statement
 
 1. Membangun model baseline menggunakan algoritma LSTM untuk memprediksi harga gas alam.
-3. Melakukan evaluasi dan perbandingan model menggunakan metrik RMSE dan MAE.
+3. Melakukan evaluasi dan perbandingan model menggunakan metrik MSE, RMSE dan MAE.
 4. Menyediakan prediksi harga gas alam hingga Januari 2028 kedepan.
 
 ## 3. Data Understanding
@@ -39,64 +39,71 @@ Mengembangkan model deep learning berbasis LSTM dan GRU untuk memprediksi harga 
 ### Exploratory Data Analysis
 
 * Visualisasi tren harga gas alam sepanjang waktu
-* Deteksi outlier dan missing value
+* Deteksi missing value
 * Plot seasonal dan rolling mean untuk melihat fluktuasi dan tren jangka panjang
+![download](https://github.com/user-attachments/assets/c256883b-e1cf-4c50-8b36-079a492ea278)
 
 ## 4. Data Preparation
 
 * Konversi data tanggal menjadi datetime
 * Penyesuaian frekuensi menjadi bulanan
 * Normalisasi data menggunakan MinMaxScaler
-* Pembuatan window input dengan sequence length (mis. 60 bulan)
+* Pembuatan window input dengan sequence length panjang 60 hari
 * Split data menjadi training dan testing (80:20)
 
 ## 5. Modeling
 
 ### Model 1: LSTM
 
-* Layer: 2 LSTM layers + Dense output
+* Layer: 1 LSTM layers + Dense output
 * Loss: MSE
 * Optimizer: Adam
-* Epoch: 50–100 (tuning)
+* Epoch: 50–100 (Improvement)
 * Output: Prediksi harga gas dari test set dan extended prediction hingga Januari 2028
-
-### Model 2: GRU
-
-* Konfigurasi serupa dengan LSTM, diganti layer GRU
-* Dibandingkan menggunakan metrik RMSE dan MAE
 
 ### Model Improvement
 
 * EarlyStopping
-* Hyperparameter tuning: units, batch size, learning rate
 
 ## 6. Evaluation
 
-* **Metrik**: RMSE, MAE
+* **Metrik**: RMSE, MAE, MSE
 * Visualisasi: plot aktual vs prediksi
 * Analisis performa pada data test dan data prediksi ke masa depan
 
 ### Rumus RMSE:
 
-$RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}$
+$$RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}$$
 
 ### Rumus MAE:
 
-$MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|$
+$$MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|$$
+
+### Rumus MSE
+
+$$
+\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+$$
+
+### Hasil Uji Test
+```
+Test Loss (MSE): 0.0010
+Test MSE       : 0.0010
+Test RMSE      : 0.0161
+Test MAE       : 0.0093
+```
+![download](https://github.com/user-attachments/assets/ffd1ffe8-d0d4-4217-b2ce-dbbf4ebbd34d)
 
 ### Hasil Sementara:
-
-* Prediksi harga gas alam per Januari 2028: \$4.15/MMBtu (berdasarkan model LSTM)
+![download](https://github.com/user-attachments/assets/ef23c8cd-4a00-4183-a485-295b9885b6d0)
+* Prediksi harga gas alam per 6 Januari 2028: \$3.32/MMBtu (berdasarkan model LSTM)
 
 ## 7. Kesimpulan dan Rekomendasi
 
 * Model LSTM berhasil mempelajari pola harga gas dengan akurasi yang cukup baik.
-* GRU memberikan hasil kompetitif dan cenderung lebih efisien secara komputasi.
 * Diperlukan evaluasi lanjutan menggunakan data eksternal dan integrasi fitur tambahan (misalnya suhu, permintaan industri).
-
+* Bisa lakukan studi komperatif dengan beberapa model dan metode statistik seperti Monte-Carlo
 ---
-
-**Catatan**: Laporan ini disusun mengikuti standar struktur proyek data science, termasuk domain problem, business understanding, data understanding, data preparation, modeling, dan evaluation. Referensi utama diambil dari publikasi EIA, IEA, dan literatur akademik terkait.
 
 ## Referensi
 [1] Ioannis E. Livieris, Emmanuel Pintelas, Niki Kiriakidou, Stavros Stavroyiannis. An Advanced Deep Learning Model for Short-Term Forecasting U.S. Natural Gas Price and Movement. 16th IFIP International Conference on Artificial Intelligence Applications and Innovations (AIAI), Jun 2020, Neos Marmaras, Greece. pp.165-176, ⟨10.1007/978-3-030-49190-1_15⟩. ⟨hal-03677622⟩ \
