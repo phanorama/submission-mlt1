@@ -15,7 +15,7 @@ Harga gas alam global bersifat sangat fluktuatif dan sulit diprediksi. Model per
 
 ### Goals
 
-Mengembangkan model deep learning berbasis LSTM dan untuk memprediksi harga gas alam ke depan, dan membandingkan performa kedua model tersebut.
+Mengembangkan model deep learning berbasis LSTM dan untuk memprediksi harga gas alam ke depan.
 
 ### Solution Statement
 
