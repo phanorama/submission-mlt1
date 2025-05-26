@@ -72,7 +72,6 @@ Penjelasan tiap lapisan:
 2. LSTM Layer
    Lapisan LSTM terdiri dari 64 unit memori (neuron) dan menggunakan fungsi aktivasi tanh.
    * return_sequences=False menunjukkan bahwa hanya keluaran dari langkah waktu terakhir yang digunakan sebagai representasi sekuens untuk diproses ke lapisan berikutnya.
-   * LSTM cocok untuk mempelajari ketergantungan temporal dalam data deret waktu.
 3. Dense Output Layer
    Lapisan penuh (dense) dengan 1 neuron digunakan untuk menghasilkan output akhir berupa nilai kontinu, yang sesuai untuk kasus regresi (misalnya prediksi nilai di waktu berikutnya dalam deret waktu).
    
