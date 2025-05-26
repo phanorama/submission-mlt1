@@ -34,7 +34,7 @@ df.head()
 
 """dataset ini berisikan informasi harga gas alam dalam frekuensi harian dari 1997 hingga sekarang
 
-## Data Preparation
+## Data Understanding
 """
 
 df.info()
@@ -341,7 +341,7 @@ forecast_df.set_index('Date', inplace=True)
 
 forecast_df[-1:]
 
-"""dengan model LSTM diprediksikan bahwa pada 06 Januari 2028, harga gas alam di level 3.32 USD/MMBtu.
+"""dengan model LSTM diprediksikan bahwa pada 01 Juni 2028, harga gas alam di level 3.32 USD/MMBtu.
 
 kita bisa juga melihat harga yang diprediksikan ke depan dari interval tahun [2025, 2028) sebagai berikut
 """
