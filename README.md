@@ -28,13 +28,20 @@ Mengembangkan model deep learning berbasis LSTM dan untuk memprediksi harga gas 
 
 * **Sumber Data**: U.S. Energy Information Administration (EIA)
   [Link Dataset](https://datahub.io/core/natural-gas#readme)
-* **Periode**: Januari 1997 hingga tahun terkini
+* **Periode**: 07 Januari 1997 hingga 19 Mei 2025
 * **Frekuensi**: Harian
 * **Fitur utama**: `Date`, `Price`
 * **Jumlah data**: 7128 baris 
 * **Jumlah data setelah preprocessing**: 7127 baris
 * **Missing value** : 1 baris
 * **Data Duplikat** : 0 baris
+* Deskripsi fitur :
+
+| Fitur  | Deskripsi                                                                 |
+|--------|---------------------------------------------------------------------------|
+| Date   | Tanggal observasi harian harga gas alam, dalam format `Year-Month-Day`.   |
+| Price  | Harga gas alam pada tanggal tertentu. Ditampilkan dalam satuan USD/MMBtu. |
+
 
 ### Exploratory Data Analysis
 
@@ -120,7 +127,12 @@ Berdasarkan hasil evaluasi pada data uji, model LSTM yang dikembangkan menunjukk
 
 ### Hasil Sementara:
 ![download](https://github.com/user-attachments/assets/ef23c8cd-4a00-4183-a485-295b9885b6d0)
-* Prediksi harga gas alam per 6 Januari 2028: \$3.32/MMBtu (berdasarkan model LSTM)
+Berdasarkan hasil forecasting dilakukan, prediksi harga gas alam per 1 Juni 2028 di level $3.32/MMBtu (berdasarkan model LSTM). Adapun data lengkap sampel forecasting sebagai berikut
+| Tanggal     | Harga yang Diprediksi |
+|-------------|------------------------|
+| 2026-06-01  | 3.164685               |
+| 2027-06-01  | 3.256494               |
+| 2028-06-01  | 3.322597               |
 
 ## 7. Kesimpulan dan Rekomendasi
 
