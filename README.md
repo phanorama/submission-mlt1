@@ -19,41 +19,64 @@ Mengembangkan model deep learning berbasis LSTM dan untuk memprediksi harga gas 
 
 ### Solution Statement
 
-1. Membangun model baseline menggunakan algoritma LSTM untuk memprediksi harga gas alam.
+1. Membangun model baseline menggunakan algoritma LSTM standar untuk memprediksi harga gas alam.
 3. Melakukan evaluasi menggunakan metrik MSE, RMSE dan MAE.
 4. Menyediakan prediksi harga gas alam hingga Januari 2028 kedepan.
+
 
 ## 3. Data Understanding
 
 * **Sumber Data**: U.S. Energy Information Administration (EIA)
   [Link Dataset](https://datahub.io/core/natural-gas#readme)
-
 * **Periode**: Januari 1997 hingga tahun terkini
-
 * **Frekuensi**: Harian
-
 * **Fitur utama**: `Date`, `Price`
-
 * **Jumlah data**: 7128 baris 
-* **Jumlah data setelah preprocessing**: 7127 baris 
+* **Jumlah data setelah preprocessing**: 7127 baris
+* **Missing value** : 1 baris
+* **Data Duplikat** : 0 baris
 
 ### Exploratory Data Analysis
 
 * Visualisasi tren harga gas alam sepanjang waktu
-* Deteksi missing value
 * Plot seasonal dan rolling mean untuk melihat fluktuasi dan tren jangka panjang
 ![download](https://github.com/user-attachments/assets/c256883b-e1cf-4c50-8b36-079a492ea278)
+
+Grafik tersebut menggambarkan fluktuasi harga gas alam yang sangat dinamis selama hampir tiga dekade terakhir. Pada periode awal, sekitar akhir 1990-an hingga awal 2000-an, harga gas alam relatif stabil, meskipun mulai menunjukkan kenaikan tajam pada tahun 2001, yang kemungkinan terkait dengan krisis energi saat itu. Puncak harga pertama terjadi sekitar tahun 2005, bersamaan dengan musim badai Katrina dan Rita yang merusak infrastruktur energi di Amerika Serikat, mendorong harga menembus angka lebih dari 15 USD/MMBtu.
+Setelah penurunan pada 2009 akibat krisis keuangan global, harga gas kembali berfluktuasi namun cenderung menurun hingga sekitar 2016, seiring peningkatan produksi shale gas di Amerika Serikat yang menstabilkan pasokan. Namun, setelah 2020, grafik menunjukkan lonjakan ekstrem, terutama pada tahun 2021 hingga 2022, di mana harga gas melonjak tajam hingga lebih dari 23 USD per MMBtu — ini kemungkinan besar dipicu oleh krisis energi global akibat konflik geopolitik (seperti perang Rusia-Ukraina) dan ketidakseimbangan pasokan-permintaan pasca-pandemi.
+Memasuki tahun 2023 hingga awal 2025, harga gas alam kembali menunjukkan pola naik-turun dengan beberapa lonjakan tajam, meski secara umum cenderung menurun dibandingkan puncak sebelumnya. Fluktuasi ini menggambarkan betapa sensitifnya harga gas terhadap faktor eksternal seperti cuaca ekstrem, konflik global, kebijakan energi, dan dinamika pasar komoditas.
 
 ## 4. Data Preparation
 
 * Konversi data tanggal menjadi datetime
+* Deteksi missing value
 * Penyesuaian frekuensi menjadi bulanan
 * Normalisasi data menggunakan MinMaxScaler
 * Pembuatan window input dengan sequence length panjang 60 hari
 * Split data menjadi training dan testing (80:20)
 
 ## 5. Modeling
+### Tinjauan Metode LSTM
+Model yang digunakan pada penelitian ini merupakan arsitektur jaringan saraf tiruan berbasis Long Short-Term Memory (LSTM) yang dirancang untuk memproses data sekuensial atau deret waktu. LSTM dipilih karena kemampuannya dalam mengingat informasi jangka panjang dan mengatasi masalah vanishing gradient yang umum terjadi pada jaringan Recurrent Neural Network (RNN) konvensional. Dalam repositori ini, model LSTM dibangun menggunakan API Sequential dari Keras dengan struktur sebagai berikut 
+```
+model_lstm = Sequential([
+    Input(shape=(window_size, 1)),
+    LSTM(64, activation='tanh', return_sequences=False),
+    Dense(1)
+])
+```
+Penjelasan tiap lapisan:
 
+1. Input Layer
+   Lapisan masukan menerima data dengan bentuk (window_size, 1), di mana window_size menunjukkan panjang urutan data historis yang digunakan untuk melakukan prediksi, dan 1 menunjukkan bahwa setiap titik waktu hanya memiliki satu fitur.
+2. LSTM Layer
+   Lapisan LSTM terdiri dari 64 unit memori (neuron) dan menggunakan fungsi aktivasi tanh.
+   * return_sequences=False menunjukkan bahwa hanya keluaran dari langkah waktu terakhir yang digunakan sebagai representasi sekuens untuk diproses ke lapisan berikutnya.
+   * LSTM cocok untuk mempelajari ketergantungan temporal dalam data deret waktu.
+3. Dense Output Layer
+   Lapisan penuh (dense) dengan 1 neuron digunakan untuk menghasilkan output akhir berupa nilai kontinu, yang sesuai untuk kasus regresi (misalnya prediksi nilai di waktu berikutnya dalam deret waktu).
+   
+Model ini dirancang untuk mempelajari pola dalam data deret waktu seperti prediksi harga gas alam yang bersifat temporal. Struktur sederhana namun efektif ini memungkinkan model untuk melakukan generalisasi tanpa overfitting secara berlebihan, khususnya jika jumlah data pelatihan terbatas.
 ### Model 1: LSTM
 
 * Layer: 1 LSTM layers + Dense output
