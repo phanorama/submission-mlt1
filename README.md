@@ -47,7 +47,7 @@ Mengembangkan model deep learning berbasis LSTM dan untuk memprediksi harga gas 
 
 * Visualisasi tren harga gas alam sepanjang waktu
 * Plot seasonal dan rolling mean untuk melihat fluktuasi dan tren jangka panjang
-![download](https://github.com/user-attachments/assets/c256883b-e1cf-4c50-8b36-079a492ea278)
+![download](https://github-production-user-asset-6210df.s3.amazonaws.com/84366840/447217532-c256883b-e1cf-4c50-8b36-079a492ea278.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250527%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250527T093359Z&X-Amz-Expires=300&X-Amz-Signature=10ac3880bf04709f22524397afdd72a27a5ed8a070c4e3d622a4446236bd0eee&X-Amz-SignedHeaders=host)
 
 Grafik tersebut menggambarkan fluktuasi harga gas alam yang sangat dinamis selama hampir tiga dekade terakhir. Pada periode awal, sekitar akhir 1990-an hingga awal 2000-an, harga gas alam relatif stabil, meskipun mulai menunjukkan kenaikan tajam pada tahun 2001, yang kemungkinan terkait dengan krisis energi saat itu. Puncak harga pertama terjadi sekitar tahun 2005, bersamaan dengan musim badai Katrina dan Rita yang merusak infrastruktur energi di Amerika Serikat, mendorong harga menembus angka lebih dari 15 USD/MMBtu.
 Setelah penurunan pada 2009 akibat krisis keuangan global, harga gas kembali berfluktuasi namun cenderung menurun hingga sekitar 2016, seiring peningkatan produksi shale gas di Amerika Serikat yang menstabilkan pasokan. Namun, setelah 2020, grafik menunjukkan lonjakan ekstrem, terutama pada tahun 2021 hingga 2022, di mana harga gas melonjak tajam hingga lebih dari 23 USD per MMBtu — ini kemungkinan besar dipicu oleh krisis energi global akibat konflik geopolitik (seperti perang Rusia-Ukraina) dan ketidakseimbangan pasokan-permintaan pasca-pandemi.
@@ -122,7 +122,7 @@ Test MSE       : 0.0010
 Test RMSE      : 0.0161
 Test MAE       : 0.0093
 ```
-![download](https://github.com/user-attachments/assets/ffd1ffe8-d0d4-4217-b2ce-dbbf4ebbd34d)
+![download](https://github-production-user-asset-6210df.s3.amazonaws.com/84366840/447217607-ffd1ffe8-d0d4-4217-b2ce-dbbf4ebbd34d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250527%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250527T093543Z&X-Amz-Expires=300&X-Amz-Signature=05eab1c72139ad521d92ffd210d99a27ab9742fe9b41ce342f2ece7a94d0afe9&X-Amz-SignedHeaders=host)
 Berdasarkan hasil evaluasi pada data uji, model LSTM yang dikembangkan menunjukkan performa prediksi yang sangat baik. Nilai Mean Squared Error (MSE) sebesar 0.0010 menunjukkan bahwa rata-rata kesalahan kuadrat antara nilai prediksi dan nilai aktual sangat kecil. Hal ini diperkuat oleh nilai Root Mean Squared Error (RMSE) sebesar 0.0161, yang menunjukkan bahwa secara rata-rata, prediksi model hanya meleset sekitar 1.61 sen per MMBtu dari harga aktual. Selain itu, nilai Mean Absolute Error (MAE) yang diperoleh adalah 0.0093, yang berarti kesalahan prediksi rata-rata berada pada kisaran 0.93 sen per MMBtu. Nilai-nilai ini mengindikasikan bahwa model mampu mempelajari pola historis data harga gas alam dengan baik, serta memiliki tingkat akurasi yang tinggi dalam melakukan prediksi pada data yang tidak pernah dilihat sebelumnya.
 
 ### Hasil Sementara:
